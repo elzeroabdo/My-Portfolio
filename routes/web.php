@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\WebsiteController;
@@ -26,4 +27,7 @@ Route::controller(WebsiteController::class)->group(function () {
     Route::get('/','index');
 
     Route::get('show/{id}','show')->name('show');
+
 });
+
+Route::post('store',[ContactController::class,'store'])->name('contact.store');

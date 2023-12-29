@@ -364,13 +364,14 @@
           <div class="email">
             <i class="bi bi-envelope"></i>
             <h4>Email:</h4>
-            <p>{{ $me->email }}</p>
+            <a href="mailto:{{ $me->email }} subject=subject text"><p>{{ $me->email }}</p></a>
           </div>
 
           <div class="phone">
             <i class="bi bi-phone"></i>
             <h4>Call:</h4>
-            <p>{{ $me->phone }}</p>
+            <a href="tel:{{ $me->phone }}"><p>{{ $me->phone }}</p></a>
+
           </div>
 
           <!-- Replace the iframe with your map or remove it if not needed -->
@@ -382,7 +383,7 @@
 
 
       <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-        <form action="#" method="post" role="form" class="php-email-form">
+        <form action="{{route('contact.store')}}" method="post">
             @csrf
             @if (session('success'))
                 <div class="alert alert-success">
@@ -393,27 +394,26 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label for="name">Your Name</label>
-              <input type="text" name="name" class="form-control" id="name" required>
+              <input type="text" name="name" class="form-control"  required>
             </div>
             <div class="form-group col-md-6">
               <label for="email">Your Email</label>
-              <input type="email" class="form-control" name="email" id="email" required>
+              <input type="email" class="form-control" name="email"  required>
             </div>
           </div>
           <div class="form-group">
             <label for="subject">Subject</label>
-            <input type="text" class="form-control" name="subject" id="subject" required>
+            <input type="text" class="form-control" name="subject" required>
           </div>
           <div class="form-group">
             <label for="message">Message</label>
             <textarea class="form-control" name="message" rows="10" required></textarea>
           </div>
-          <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Send Message</button></div>
+          <br>
+          <div class="form-group align-items-center">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+
         </form>
       </div>
 
