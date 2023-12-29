@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\WebsiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,12 @@ use App\Http\Controllers\ProjectController;
 
 
 
-Route::resources([
-    '/' => ProjectController::class,
 
-]);
+
+
+
+Route::controller(WebsiteController::class)->group(function () {
+    Route::get('/','index');
+
+    Route::get('show/{id}','show')->name('show');
+});

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Info;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // set me variable to the view for all info model
+        view()->composer('*', function ($view) {
+            $view->with('me', Info::first());
+        });
     }
 }
